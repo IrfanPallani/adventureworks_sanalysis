@@ -1,4 +1,4 @@
-USE AdverntureWorks
+USE AdverntureWorks2025
 
 
 SELECT
