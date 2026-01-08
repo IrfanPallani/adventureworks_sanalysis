@@ -1,6 +1,14 @@
 USE AdverntureWorks
 
 
+
+SELECT *
+FROM Production.ProductCategory
+SELECT *
+FROM Production.ProductSubcategory
+SELECT *
+FROM Production.Product
+
 SELECT
     pc.Name AS Category,
     SUM(sod.LineTotal) AS Totalsales
