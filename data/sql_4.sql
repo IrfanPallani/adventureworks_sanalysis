@@ -3,9 +3,9 @@ USE AdventureWorks2025
 
 
 SELECT
-    YEAR(OrderDate) AS Year,
-    COUNT(SalesOrderID) AS OrderCount,
-    SUM(TotalDue) AS TotalSales
+    YEAR(OrderDate) as År,
+    SUM(TotalDue) AS Försäljning,
+    COUNT(*) as Ordrar
 FROM Sales.SalesOrderHeader
 GROUP BY YEAR(OrderDate)
-ORDER BY Year ASC;
+ORDER BY År

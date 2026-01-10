@@ -2,22 +2,18 @@ USE AdventureWorks2025
 
 
 SELECT
-    st.Name AS Region,
+    st.Name as Region,
     CASE 
-        WHEN s.BusinessEntityID IS NULL THEN 'Individual'
-        ELSE 'Store'
-    END AS CustomerType,
-    SUM(soh.TotalDue) / COUNT(soh.SalesOrderID) AS AvgSalesPerOrder
+        WHEN c.StoreID IS NOT NULL THEN 'Store'
+        ELSE 'Individual'
+    END AS Kundtyp,
+    AVG(sol.TotalDue) AS Genomsnitt
 FROM Sales.SalesOrderHeader soh
-    JOIN Sales.Customer C
-    ON soh.CustomerID = c.CustomerID
-    LEFT JOIN Sales.Store s
-    ON c.StoreID = s.BusinessEntityID
-    JOIN Sales.SalesTerritory st
-    ON soh.TerritoryID = st.TerritoryID
+    JOIN Sales.Customer c ON soh.CustomerID = c.CustomerID
+    JOIN Sales.SalesTerritory st ON soh.TerritoryID = st.TerritoryID
 GROUP BY st.Name,
     CASE 
-        WHEN s.BusinessEntityID IS NULL THEN 'Individual'
-        ELSE 'Store'
+        WHEN c.StoreID IS NOT NULL THEN 'Store'
+        ELSE 'Individual'
     END
-ORDER BY AvgSalesPerOrder DESC
+ORDER BY Region
