@@ -3,7 +3,7 @@ USE AdventureWorks2025
 
 
 SELECT
-    pc.Name AS Category,
+    pc.Name as Kategori,
     SUM(sod.LineTotal) AS Totalsales
 FROM Sales.SalesOrderDetail sod
     JOIN Production.Product p

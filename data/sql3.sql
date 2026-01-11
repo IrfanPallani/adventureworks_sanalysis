@@ -1,3 +1,4 @@
+USE AdventureWorks2025
 
 SELECT
     FORMAT(OrderDate, 'yyyy-MM') AS Month,
